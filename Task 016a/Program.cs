@@ -17,6 +17,7 @@ do
         SecondMax = FirstMax;
         FirstMax = n;
     }
+    else if (n > SecondMax) SecondMax = n;
 } while (n != 0);
 
 Console.WriteLine($"Второе по величине число: {SecondMax}.");
