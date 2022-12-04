@@ -14,7 +14,9 @@ bool NumberInInterval(int value, int min, int max)
 }
 // ------------- Конец функции NumberInInterval -------------------
 
-string[] DayOfWeek = new string[7] { "понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресение"};
+string[] DayOfWeek = new string[7] { "понедельник", "вторник", "среда", "четверг", 
+                                     "пятница", "суббота", "воскресение"};
+
 Console.Clear();
 
 int n;
