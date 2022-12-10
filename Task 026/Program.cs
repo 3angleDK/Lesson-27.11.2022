@@ -2,7 +2,7 @@
 
 Console.Clear();
 
-Console.Write("Веедите число: ");
+Console.Write("Введите число: ");
 int n = Convert.ToInt32(Console.ReadLine());
 // вариант решения в лоб
 int m = n, count = 0;

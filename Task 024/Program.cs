@@ -2,7 +2,7 @@
 
 Console.Clear();
 
-Console.Write("Веедите число N: ");
+Console.Write("Введите число N: ");
 int n = Convert.ToInt32(Console.ReadLine());
 // вариант решения в лоб
 int sum = 0;
