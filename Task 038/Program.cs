@@ -13,7 +13,7 @@ Console.Write("Введите размер массива: ");
 int n = Convert.ToInt32(Console.ReadLine());
 double[] array = new double[n];
 for (int i = 0; i < n; i++)
-    array[i] = new Random().Next(-100, 100);
+    array[i] = new Random().Next(-1000, 1000) / 10.0;
 
 Console.Write("Исходный массив: ");
 PrintArray(array);
