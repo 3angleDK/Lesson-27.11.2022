@@ -1,5 +1,6 @@
 ﻿// Вводим размер массива, заполняем его случайными значениями и 
 // сдвигаем элементы массива на заданное число элементов
+// решение через последовательный сдвиг на 1 элемент
 
 void PrintArray(int[] arr)
 {
@@ -9,18 +10,6 @@ void PrintArray(int[] arr)
     Console.WriteLine($"{arr[arr.Length - 1]}]");
 }
 Console.Clear();
-
-// ------ Функция возвращает "правильный" индекс массива -----
-int NormIndex(int value, int n)
-{
-    int result = value;
-    if (value < 0)
-        result = n + value;
-    else if (value >= n)
-        result = value - n;
-    return result;
-}
-// ------ Конец функции NormIndex ------
 
 Console.Write("Введите размер массива: ");
 int n = Convert.ToInt32(Console.ReadLine());
@@ -33,27 +22,19 @@ PrintArray(array);
 
 Console.Write("Введите величину сдвига: ");
 int shift = Convert.ToInt32(Console.ReadLine());
+shift = shift % n;
+// циклический сдвиг влево на i элементов, равноценен 
+// сдвигу вправо на (n-i) элементов
+if (shift < 0) shift += n;
+
 int tmp;
 
-if (shift >= 0)
+for (int s = 0; s < shift; s++)
 {
-    for (int s = 0; s < shift; s++)
-    {
-        tmp = array[n - 1];
-        for (int i = n - 2; i >= 0; i--)
-            array[i + 1] = array[i];
-        array[0] = tmp;
-    }
-}
-else
-{
-    for (int s = 0; s > shift; s--)
-    {
-        tmp = array[0];
-        for (int i = 1; i < n; i++)
-            array[i - 1] = array[i];
-        array[n - 1] = tmp;
-    }
+    tmp = array[n - 1];
+    for (int i = n - 2; i >= 0; i--)
+        array[i + 1] = array[i];
+    array[0] = tmp;
 }
 
 Console.Write("Массив после сдвига: ");
