@@ -14,11 +14,8 @@ Console.Clear();
 // ------ Функция возвращает "правильный" индекс массива -----
 int NormIndex(int value, int n)
 {
-    int result = value;
-    if (value < 0)
-        result = n + value;
-    else if (value >= n)
-        result = value - n;
+    int result = value % n;
+    if (result < 0) result += n;
     return result;
 }
 // ------ Конец функции NormIndex ------
