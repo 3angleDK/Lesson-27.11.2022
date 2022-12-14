@@ -51,7 +51,7 @@ while (change_count < n)
         next_index = NormIndex(cur_index + shift, n);
     } while (cur_index != start_index);
     start_index++;
-} 
+}
 
 Console.Write("Массив после сдвига: ");
 PrintArray(array);
