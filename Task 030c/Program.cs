@@ -9,7 +9,6 @@ void PrintArray(int[] arr)
         Console.Write($"{arr[i]}, ");
     Console.WriteLine($"{arr[arr.Length - 1]}]");
 }
-Console.Clear();
 
 // ------ Функция возвращает "правильный" индекс массива -----
 int NormIndex(int value, int n)
@@ -20,6 +19,7 @@ int NormIndex(int value, int n)
 }
 // ------ Конец функции NormIndex ------
 
+Console.Clear();
 Console.Write("Введите размер массива: ");
 int n = Convert.ToInt32(Console.ReadLine());
 int[] array = new int[n];
@@ -33,23 +33,21 @@ Console.Write("Введите величину сдвига: ");
 int shift = Convert.ToInt32(Console.ReadLine());
 shift = shift % n;
 
-int start_index = 0;
-int change_count = 0, tmp1, tmp2;
-
+int start_index = 0, change_count = 0;
 while (change_count < n)
 {
-    int cur_index = start_index;
-    int next_index = NormIndex(cur_index + shift, n);
-    tmp1 = array[cur_index];
+    int next_index = NormIndex(start_index + shift, n);
+    int tmp_cur, tmp_next;
+    tmp_cur = array[start_index];
     do
     {
-        tmp2 = array[next_index];
-        array[next_index] = tmp1;
+        tmp_next = array[next_index];
+        array[next_index] = tmp_cur;
         change_count++;
-        cur_index = next_index;
-        tmp1 = tmp2;
-        next_index = NormIndex(cur_index + shift, n);
-    } while (cur_index != start_index);
+        if (next_index == start_index) break;
+        tmp_cur = tmp_next;
+        next_index = NormIndex(next_index + shift, n);
+    } while (true);
     start_index++;
 }
 
