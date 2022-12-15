@@ -6,8 +6,8 @@ void PrintArray(int[] arr)
 {
     Console.Write("[");
     for (int i = 0; i < arr.Length - 1; i++)
-        Console.Write($"{arr[i]}, ");
-    Console.WriteLine($"{arr[arr.Length - 1]}]");
+        Console.Write(String.Format("{0,2}, ", arr[i]));
+    Console.WriteLine(String.Format("{0,2}]", arr[arr.Length - 1]));
 }
 
 // ------ Функция возвращает "правильный" индекс массива -----
@@ -64,19 +64,19 @@ while (change_count < n)
 {
     int cur_index = start_index;
     int next_index = NormIndex(cur_index + shift, n);
+    int tmp = array[cur_index];
     while (next_index != start_index)
     {
-        int tmp = array[next_index];
-        array[next_index] = array[cur_index];
-        array[cur_index] = tmp;
-        Console.Write($" {cur_index} <-> {next_index} |");
+        array[cur_index] = array[next_index];
+        Console.Write($"{cur_index} <- ");  // для отладки
         change_count++;
         cur_index = next_index;
         next_index = NormIndex(next_index + shift, n);
     }
+    array[cur_index] = tmp;
+    Console.WriteLine($"{cur_index} <- {start_index}");  // для отладки
     start_index++;
     change_count++;
-    Console.WriteLine();
 }
 Console.Write("Массив после сдвига: ");
 PrintArray(array);
