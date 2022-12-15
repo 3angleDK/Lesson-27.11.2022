@@ -39,18 +39,44 @@ while (change_count < n)
     int next_index = NormIndex(start_index + shift, n);
     int tmp_cur, tmp_next;
     tmp_cur = array[start_index];
+    Console.Write($"{start_index} ");
     do
     {
         tmp_next = array[next_index];
         array[next_index] = tmp_cur;
+        Console.Write($"-> {next_index} ");
         change_count++;
         if (next_index == start_index) break;
         tmp_cur = tmp_next;
         next_index = NormIndex(next_index + shift, n);
     } while (true);
     start_index++;
+    Console.WriteLine();
 }
 
 Console.Write("Массив после сдвига: ");
 PrintArray(array);
 
+Console.WriteLine("Сдвигаем в обратную сторону.");
+start_index = 0;
+change_count = 0;
+while (change_count < n)
+{
+    int cur_index = start_index;
+    int next_index = NormIndex(cur_index + shift, n);
+    while (next_index != start_index)
+    {
+        int tmp = array[next_index];
+        array[next_index] = array[cur_index];
+        array[cur_index] = tmp;
+        Console.Write($" {cur_index} <-> {next_index} |");
+        change_count++;
+        cur_index = next_index;
+        next_index = NormIndex(next_index + shift, n);
+    }
+    start_index++;
+    change_count++;
+    Console.WriteLine();
+}
+Console.Write("Массив после сдвига: ");
+PrintArray(array);
