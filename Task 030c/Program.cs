@@ -35,22 +35,21 @@ shift = shift % n;
 int start_index = 0, change_count = 0;
 while (change_count < n)
 {
-    int next_index = NormIndex(start_index + shift, n);
-    int tmp_cur, tmp_next;
-    tmp_cur = array[start_index];
-    Console.Write($"{start_index} ");
-    do
+    int cur_index = start_index;
+    int next_index = NormIndex(cur_index - shift, n);
+    int tmp = array[cur_index];
+    while (next_index != start_index)
     {
-        tmp_next = array[next_index];
-        array[next_index] = tmp_cur;
-        Console.Write($"-> {next_index} ");
+        array[cur_index] = array[next_index];
+        Console.Write($"{cur_index} <- ");  // для отладки
         change_count++;
-        if (next_index == start_index) break;
-        tmp_cur = tmp_next;
-        next_index = NormIndex(next_index + shift, n);
-    } while (true);
+        cur_index = next_index;
+        next_index = NormIndex(next_index - shift, n);
+    }
+    array[cur_index] = tmp;
+    Console.WriteLine($"{cur_index} <- {start_index}");  // для отладки
     start_index++;
-    Console.WriteLine();
+    change_count++;
 }
 
 Console.Write("Массив после сдвига: ");
