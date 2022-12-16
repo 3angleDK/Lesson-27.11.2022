@@ -12,8 +12,7 @@ void PrintArray(int[] arr)
 // ------ Функция возвращает "правильный" индекс массива -----
 int NormIndex(int value, int n)
 {
-    int result = value % n;
-    return (result >= 0) ? result : result + n;
+    return (value >= 0) ? (value % n) : (value % n) + n;
 }
 // ------ Конец функции NormIndex ------
 
