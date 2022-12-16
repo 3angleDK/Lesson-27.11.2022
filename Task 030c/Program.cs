@@ -13,8 +13,7 @@ void PrintArray(int[] arr)
 int NormIndex(int value, int n)
 {
     int result = value % n;
-    if (result < 0) result += n;
-    return result;
+    return (result >= 0) ? result : result + n;
 }
 // ------ Конец функции NormIndex ------
 
@@ -24,14 +23,15 @@ int n = Convert.ToInt32(Console.ReadLine());
 int[] array = new int[n];
 for (int i = 0; i < n; i++)
     array[i] = new Random().Next(0, 100);
-
 Console.Write("Исходный массив    : ");
 PrintArray(array);
 
 Console.Write("Введите величину сдвига: ");
 int shift = Convert.ToInt32(Console.ReadLine());
+// удаляем лишние циклы сдвигов (для данного алгоритма необязательная операция)
 shift = shift % n;
 
+// непосредственно сдвиг
 int start_index = 0, change_count = 0;
 while (change_count < n)
 {
@@ -56,8 +56,7 @@ Console.Write("Массив после сдвига: ");
 PrintArray(array);
 
 Console.WriteLine("Сдвигаем в обратную сторону.");
-start_index = 0;
-change_count = 0;
+start_index = 0; change_count = 0;
 while (change_count < n)
 {
     int cur_index = start_index;

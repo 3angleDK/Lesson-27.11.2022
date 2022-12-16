@@ -15,7 +15,7 @@ Console.Clear();
 int NormIndex(int value, int n)
 {
     int result = value % n;
-    if (result < 0) result += n;
+    if (result < 0) return result + n;
     return result;
 }
 // ------ Конец функции NormIndex ------
@@ -31,6 +31,7 @@ PrintArray(array);
 
 Console.Write("Введите величину сдвига: ");
 int shift = Convert.ToInt32(Console.ReadLine());
+// удаляем лишние циклы сдвигов
 shift = shift % n;
 
 int[] shifted_array = new int[n];
