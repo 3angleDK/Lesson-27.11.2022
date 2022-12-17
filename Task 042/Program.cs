@@ -5,7 +5,6 @@ Console.Write("Введите число: ");
 int a = Convert.ToInt32(Console.ReadLine());
 int b = a;
 string bin = String.Empty;
-bin = "";
 
 while (b > 0)
 {
