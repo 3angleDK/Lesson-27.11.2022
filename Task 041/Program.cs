@@ -1,5 +1,6 @@
 ﻿// Подсчитать количество положительных элементов в массиве
 
+Console.Clear();
 Console.Write("Введите элементы массива: ");
 //double[] array = Console.ReadLine().Split(" ").Select(x => double.Parse(x)).ToArray();
 double[] array = Console.ReadLine().Split(" ").Select(x => Convert.ToDouble(x)).ToArray();
