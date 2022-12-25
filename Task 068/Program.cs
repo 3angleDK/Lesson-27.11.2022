@@ -1,10 +1,10 @@
 ﻿// Вычисление функции Аккермана (с помощью рекурсии)
 
-int Func(int n, int m)
+int Func(int m, int n)
 {
-    if (n == 0) return m + 1;
-    if (m == 0) return Func(n - 1, 1);
-    return Func(n - 1, Func(n, m - 1));
+    if (m == 0) return n + 1;
+    if (n == 0) return Func(m - 1, 1);
+    return Func(m - 1, Func(m, n - 1));
 }
 
 Console.Clear();
@@ -13,5 +13,5 @@ int m = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите число N: ");
 int n = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine($"Функция Аккерамана A({n},{m}) = {Func(n, m)}");
+Console.WriteLine($"Функция Аккерамана A({m},{n}) = {Func(m, n)}");
 
