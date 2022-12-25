@@ -1,10 +1,10 @@
 ﻿// Вывести все натуральные числа на отрезке [M, N] (с помощью рекурсии)
 
-string GetNumbers(int m, int n)
+string GetNumbers(int start, int end)
 {
-    if (n == m) return n.ToString();
-    return (m < n) ? GetNumbers(m, n - 1) + $", {n}": 
-                     GetNumbers(m, n + 1) + $", {n}";
+    if (start == end) return end.ToString();
+    return (start < end) ? GetNumbers(start, end - 1) + $", {end}": 
+                           GetNumbers(start - 1, end) + $", {start}";
 }
 
 Console.Clear();
