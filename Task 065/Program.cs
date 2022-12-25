@@ -7,6 +7,7 @@ string GetNumbers(int start, int end)
                            GetNumbers(start - 1, end) + $", {start}";
 }
 
+
 Console.Clear();
 Console.Write("Введите число M: ");
 int m = Convert.ToInt32(Console.ReadLine());
